@@ -1,0 +1,151 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Login - Civic Complaint Management System</title>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <link rel="stylesheet" href="style.css">
+</head>
+<body class="auth-bg">
+  <div class="container">
+    <div class="row justify-content-center mt-5">
+      <div class="col-md-8 col-lg-6">
+        <div class="card shadow-lg border-0 rounded-lg">
+          <div class="card-header bg-primary text-white text-center py-4">
+            <h2 class="fw-light mb-0">
+              <i class="fas fa-city me-2"></i>
+              Civic Complaint Management System
+            </h2>
+          </div>
+          <div class="card-body p-5">
+            <ul class="nav nav-tabs nav-fill mb-4" id="authTabs" role="tablist">
+              <li class="nav-item" role="presentation">
+                <button class="nav-link active" id="login-tab" data-bs-toggle="tab" data-bs-target="#login" type="button" role="tab" aria-controls="login" aria-selected="true">
+                  <i class="fas fa-sign-in-alt me-2"></i>Login
+                </button>
+              </li>
+              <li class="nav-item" role="presentation">
+                <button class="nav-link" id="register-tab" data-bs-toggle="tab" data-bs-target="#register" type="button" role="tab" aria-controls="register" aria-selected="false">
+                  <i class="fas fa-user-plus me-2"></i>Register
+                </button>
+              </li>
+            </ul>
+            
+            <div class="tab-content" id="authTabsContent">
+              <!-- Login Form -->
+              <div class="tab-pane fade show active" id="login" role="tabpanel" aria-labelledby="login-tab">
+                <form id="loginForm">
+                  <div class="mb-3">
+                    <label for="loginEmail" class="form-label">Email Address</label>
+                    <div class="input-group">
+                      <span class="input-group-text"><i class="fas fa-envelope"></i></span>
+                      <input type="email" class="form-control" id="loginEmail" placeholder="Enter your email" required>
+                    </div>
+                    <div id="loginEmailError" class="form-text text-danger"></div>
+                  </div>
+                  
+                  <div class="mb-4">
+                    <label for="loginPassword" class="form-label">Password</label>
+                    <div class="input-group">
+                      <span class="input-group-text"><i class="fas fa-lock"></i></span>
+                      <input type="password" class="form-control" id="loginPassword" placeholder="Enter your password" required>
+                      <button class="btn btn-outline-secondary toggle-password" type="button" tabindex="-1">
+                        <i class="fas fa-eye"></i>
+                      </button>
+                    </div>
+                    <div id="loginPasswordError" class="form-text text-danger"></div>
+                  </div>
+                  
+                  <div id="loginMsg" class="alert alert-danger d-none"></div>
+                  
+                  <div class="d-grid gap-2">
+                    <button type="submit" class="btn btn-primary btn-lg">
+                      <i class="fas fa-sign-in-alt me-2"></i>Login
+                    </button>
+                  </div>
+                </form>
+              </div>
+              
+              <!-- Register Form -->
+              <div class="tab-pane fade" id="register" role="tabpanel" aria-labelledby="register-tab">
+                <form id="registerForm">
+                  <div class="mb-3">
+                    <label for="registerRole" class="form-label">Role</label>
+                    <div class="input-group">
+                      <span class="input-group-text"><i class="fas fa-user-tag"></i></span>
+                      <select class="form-select" id="registerRole" required>
+                        <option value="">Select Role</option>
+                        <option value="user">Citizen</option>
+                        <option value="admin">Administrator</option>
+                      </select>
+                    </div>
+                    <div id="roleError" class="form-text text-danger"></div>
+                  </div>
+                  
+                  <div class="mb-3">
+                    <label for="registerUsername" class="form-label">Full Name</label>
+                    <div class="input-group">
+                      <span class="input-group-text"><i class="fas fa-user"></i></span>
+                      <input type="text" class="form-control" id="registerUsername" placeholder="Enter your full name" required>
+                    </div>
+                    <div id="usernameError" class="form-text text-danger"></div>
+                  </div>
+                  
+                  <div class="mb-3">
+                    <label for="registerEmail" class="form-label">Email Address</label>
+                    <div class="input-group">
+                      <span class="input-group-text"><i class="fas fa-envelope"></i></span>
+                      <input type="email" class="form-control" id="registerEmail" placeholder="Enter your email" required>
+                    </div>
+                    <div id="emailError" class="form-text text-danger"></div>
+                  </div>
+                  
+                  <div class="mb-3">
+                    <label for="registerPhone" class="form-label">Phone Number</label>
+                    <div class="input-group">
+                      <span class="input-group-text"><i class="fas fa-phone"></i></span>
+                      <input type="tel" class="form-control" id="registerPhone" placeholder="Enter 10-digit phone number" required>
+                    </div>
+                    <div id="phoneError" class="form-text text-danger"></div>
+                  </div>
+                  
+                  <div class="mb-4">
+                    <label for="registerPassword" class="form-label">Password</label>
+                    <div class="input-group">
+                      <span class="input-group-text"><i class="fas fa-lock"></i></span>
+                      <input type="password" class="form-control" id="registerPassword" placeholder="Create a password" required>
+                      <button class="btn btn-outline-secondary toggle-password" type="button" tabindex="-1">
+                        <i class="fas fa-eye"></i>
+                      </button>
+                    </div>
+                    <div id="passwordError" class="form-text text-danger"></div>
+                  </div>
+                  
+                  <div id="registerMsg" class="alert alert-danger d-none"></div>
+                  
+                  <div class="d-grid gap-2">
+                    <button type="submit" class="btn btn-primary btn-lg">
+                      <i class="fas fa-user-plus me-2"></i>Register
+                    </button>
+                  </div>
+                </form>
+              </div>
+            </div>
+          </div>
+          <div class="card-footer text-center py-3">
+            <div class="text-muted">
+              <i class="fas fa-shield-alt me-1"></i> Secure Login | <i class="fas fa-clock me-1"></i> 24/7 Support
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+  <script src="api.js"></script>
+  <script src="auth.js"></script>
+</body>
+</html>

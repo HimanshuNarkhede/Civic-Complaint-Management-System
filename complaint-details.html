@@ -1,0 +1,144 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Complaint Details - Civic Complaint Management System</title>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <div class="layout-container">
+    <!-- Sidebar will be dynamically added based on user role -->
+    <div id="sidebarContainer"></div>
+    
+    <!-- Content Wrapper -->
+    <div class="content-wrapper">
+      <!-- Header -->
+      <header class="header">
+        <button class="btn btn-sm d-md-none mobile-menu-toggle">
+          <i class="fas fa-bars"></i>
+        </button>
+        
+        <h1 class="page-title">Complaint Details</h1>
+        
+        <div class="ms-auto d-flex align-items-center">
+          <button id="backButton" class="btn btn-outline-secondary me-2">
+            <i class="fas fa-arrow-left me-2"></i>Back
+          </button>
+          
+          <button id="printButton" class="btn btn-outline-primary me-3">
+            <i class="fas fa-print me-2"></i>Print
+          </button>
+          
+          <div class="dropdown user-dropdown">
+            <button class="btn btn-link dropdown-toggle text-decoration-none" type="button" id="userDropdown" data-bs-toggle="dropdown" aria-expanded="false">
+              <i class="fas fa-user-circle me-1"></i>
+              <span id="userName">User</span>
+            </button>
+            <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="userDropdown">
+              <li><a class="dropdown-item" href="#" onclick="logout()"><i class="fas fa-sign-out-alt me-2"></i>Logout</a></li>
+            </ul>
+          </div>
+        </div>
+      </header>
+      
+      <!-- Main Content -->
+      <main class="main-content">
+        <div class="container-fluid">
+          <div class="row">
+            <div class="col-lg-8">
+              <!-- Complaint Information -->
+              <div class="content-card mb-4">
+                <div class="card-header">
+                  <h5 class="card-title">Complaint Information</h5>
+                  <span id="complaintIdBadge" class="badge bg-secondary"></span>
+                </div>
+                <div class="card-body">
+                  <div id="complaintDetails">
+                    <!-- Will be populated by JavaScript -->
+                    <div class="text-center py-5">
+                      <div class="spinner-border text-primary" role="status">
+                        <span class="visually-hidden">Loading...</span>
+                      </div>
+                      <p class="mt-2">Loading complaint details...</p>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              
+              <!-- Admin Actions (visible only to admins) -->
+              <div id="adminActions" class="content-card mb-4 d-none">
+                <div class="card-header">
+                  <h5 class="card-title">Update Status</h5>
+                </div>
+                <div class="card-body">
+                  <form id="updateStatusForm">
+                    <div class="row align-items-end">
+                      <div class="col-md-8">
+                        <label for="statusSelect" class="form-label">Status</label>
+                        <select class="form-select" id="statusSelect">
+                          <option value="Pending">Pending</option>
+                          <option value="In Progress">In Progress</option>
+                          <option value="Resolved">Resolved</option>
+                          <option value="Rejected">Rejected</option>
+                        </select>
+                      </div>
+                      <div class="col-md-4">
+                        <button type="submit" class="btn btn-primary w-100">Update Status</button>
+                      </div>
+                    </div>
+                    <div id="statusUpdateMsg" class="mt-3"></div>
+                  </form>
+                </div>
+              </div>
+            </div>
+            
+            <div class="col-lg-4">
+              <!-- Status Timeline -->
+              <div class="content-card mb-4">
+                <div class="card-header">
+                  <h5 class="card-title">Status Timeline</h5>
+                </div>
+                <div class="card-body">
+                  <div id="statusTimeline">
+                    <!-- Will be populated by JavaScript -->
+                    <div class="text-center py-4">
+                      <div class="spinner-border text-primary" role="status">
+                        <span class="visually-hidden">Loading...</span>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              
+              <!-- Department Information -->
+              <div class="content-card">
+                <div class="card-header">
+                  <h5 class="card-title">Department Information</h5>
+                </div>
+                <div class="card-body">
+                  <div id="departmentInfo">
+                    <!-- Will be populated by JavaScript -->
+                    <div class="text-center py-4">
+                      <div class="spinner-border text-primary" role="status">
+                        <span class="visually-hidden">Loading...</span>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </main>
+    </div>
+  </div>
+  
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+  <script src="api.js"></script>
+  <script src="common.js"></script>
+  <script src="complaint-details.js"></script>
+</body>
+</html>

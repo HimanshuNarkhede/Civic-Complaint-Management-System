@@ -1,0 +1,182 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Submit Feedback - Civic Complaint Management System</title>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <div class="layout-container">
+    <!-- Sidebar -->
+    <div class="sidebar">
+      <div class="sidebar-header">
+        <a href="user-dashboard.html" class="sidebar-brand">
+          <i class="fas fa-city"></i>
+          <span>CMS Portal</span>
+        </a>
+      </div>
+      
+      <ul class="sidebar-menu">
+        <li>
+          <a href="user-dashboard.html">
+            <i class="fas fa-tachometer-alt"></i>
+            <span>Dashboard</span>
+          </a>
+        </li>
+        <li>
+          <a href="file-complaint.html">
+            <i class="fas fa-file-alt"></i>
+            <span>File Complaint</span>
+          </a>
+        </li>
+        <li>
+          <a href="my-complaints.html">
+            <i class="fas fa-list-alt"></i>
+            <span>My Complaints</span>
+          </a>
+        </li>
+        <li>
+          <a href="feedback.html" class="active">
+            <i class="fas fa-comment-alt"></i>
+            <span>Submit Feedback</span>
+          </a>
+        </li>
+        <li>
+          <a href="user-profile.html">
+            <i class="fas fa-user-circle"></i>
+            <span>My Profile</span>
+          </a>
+        </li>
+        
+        <div class="sidebar-divider"></div>
+        
+        <li>
+          <a href="#" onclick="logout()">
+            <i class="fas fa-sign-out-alt"></i>
+            <span>Logout</span>
+          </a>
+        </li>
+      </ul>
+      
+      <div class="sidebar-footer">
+        <span>Civic Complaint Management System</span>
+      </div>
+    </div>
+    
+    <!-- Content Wrapper -->
+    <div class="content-wrapper">
+      <!-- Header -->
+      <header class="header">
+        <button class="btn btn-sm d-md-none mobile-menu-toggle">
+          <i class="fas fa-bars"></i>
+        </button>
+        
+        <h1 class="page-title">Submit Feedback</h1>
+        
+        <div class="ms-auto d-flex align-items-center">
+          <div class="dropdown user-dropdown">
+            <button class="btn btn-link dropdown-toggle text-decoration-none" type="button" id="userDropdown" data-bs-toggle="dropdown" aria-expanded="false">
+              <i class="fas fa-user-circle me-1"></i>
+              <span id="userName">User</span>
+            </button>
+            <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="userDropdown">
+              <li><a class="dropdown-item" href="user-profile.html"><i class="fas fa-user me-2"></i>My Profile</a></li>
+              <li><hr class="dropdown-divider"></li>
+              <li><a class="dropdown-item" href="#" onclick="logout()"><i class="fas fa-sign-out-alt me-2"></i>Logout</a></li>
+            </ul>
+          </div>
+        </div>
+      </header>
+      
+      <!-- Main Content -->
+      <main class="main-content">
+        <div class="container-fluid">
+          <div class="row">
+            <div class="col-lg-8">
+              <div class="content-card">
+                <div class="card-header">
+                  <h5 class="card-title">Share Your Feedback</h5>
+                </div>
+                <div class="card-body">
+                  <form id="feedbackForm" class="custom-form">
+                    <div class="mb-3">
+                      <label for="feedbackSubject" class="form-label">Subject</label>
+                      <input type="text" class="form-control" id="feedbackSubject" placeholder="Enter a subject for your feedback" required>
+                      <div id="subjectError" class="form-text text-danger"></div>
+                    </div>
+                    
+                    <div class="mb-3">
+                      <label for="feedbackMessage" class="form-label">Your Message</label>
+                      <textarea class="form-control" id="feedbackMessage" rows="6" placeholder="Please share your thoughts, suggestions, or concerns" required></textarea>
+                      <div id="messageError" class="form-text text-danger"></div>
+                    </div>
+                    
+                    <div id="feedbackMsg" class="alert alert-danger d-none"></div>
+                    <div id="feedbackSuccess" class="alert alert-success d-none"></div>
+                    
+                    <div class="d-flex justify-content-between">
+                      <a href="user-dashboard.html" class="btn btn-outline-secondary">
+                        <i class="fas fa-arrow-left me-2"></i>Back to Dashboard
+                      </a>
+                      <button type="submit" class="btn btn-primary">
+                        <i class="fas fa-paper-plane me-2"></i>Submit Feedback
+                      </button>
+                    </div>
+                  </form>
+                </div>
+              </div>
+            </div>
+            
+            <div class="col-lg-4">
+              <div class="content-card mb-4">
+                <div class="card-header">
+                  <h5 class="card-title">Why Your Feedback Matters</h5>
+                </div>
+                <div class="card-body">
+                  <div class="mb-3">
+                    <i class="fas fa-bullseye fa-2x text-primary mb-2"></i>
+                    <h6>Improve Our Services</h6>
+                    <p class="small text-muted">Your feedback helps us identify areas where we can improve our complaint handling process.</p>
+                  </div>
+                  
+                  <div class="mb-3">
+                    <i class="fas fa-lightbulb fa-2x text-primary mb-2"></i>
+                    <h6>Share Your Ideas</h6>
+                    <p class="small text-muted">Have suggestions for new features or improvements? We'd love to hear them!</p>
+                  </div>
+                  
+                  <div>
+                    <i class="fas fa-hands-helping fa-2x text-primary mb-2"></i>
+                    <h6>Help Others</h6>
+                    <p class="small text-muted">Your feedback can help us create a better experience for all citizens using our system.</p>
+                  </div>
+                </div>
+              </div>
+              
+              <div class="content-card">
+                <div class="card-header">
+                  <h5 class="card-title">Contact Information</h5>
+                </div>
+                <div class="card-body">
+                  <p>If you need immediate assistance, please contact us directly:</p>
+                  <p><i class="fas fa-envelope me-2 text-primary"></i> support@civic-cms.gov</p>
+                  <p><i class="fas fa-phone me-2 text-primary"></i> +1 (555) 123-4567</p>
+                  <p class="mb-0"><i class="fas fa-clock me-2 text-primary"></i> Mon-Fri, 9:00 AM - 5:00 PM</p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </main>
+    </div>
+  </div>
+  
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+  <script src="api.js"></script>
+  <script src="common.js"></script>
+  <script src="feedback.js"></script>
+</body>
+</html>

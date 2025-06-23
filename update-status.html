@@ -1,0 +1,194 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Update Status - Civic Complaint Management System</title>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <div class="layout-container">
+    <!-- Sidebar -->
+    <div class="sidebar">
+      <div class="sidebar-header">
+        <a href="admin-dashboard.html" class="sidebar-brand">
+          <i class="fas fa-city"></i>
+          <span>CMS Admin</span>
+        </a>
+      </div>
+      <ul class="sidebar-menu">
+        <li>
+          <a href="admin-dashboard.html">
+            <i class="fas fa-tachometer-alt"></i>
+            <span>Dashboard</span>
+          </a>
+        </li>
+        <li>
+          <a href="all-complaints.html">
+            <i class="fas fa-list-alt"></i>
+            <span>All Complaints</span>
+          </a>
+        </li>
+        <li>
+          <a href="update-status.html" class="active">
+            <i class="fas fa-tasks"></i>
+            <span>Update Status</span>
+          </a>
+        </li>
+        <li>
+          <a href="reports.html">
+            <i class="fas fa-chart-bar"></i>
+            <span>Reports</span>
+          </a>
+        </li>
+        <li>
+          <a href="manage-complaint-types.html">
+            <i class="fas fa-tags"></i>
+            <span>Complaint Types</span>
+          </a>
+        </li>
+        
+        <li>
+          <a href="view-feedback.html">
+            <i class="fas fa-comment-alt"></i>
+            <span>View Feedback</span>
+          </a>
+        </li>
+        <div class="sidebar-divider"></div>
+        <li>
+          <a href="#" onclick="logout()">
+            <i class="fas fa-sign-out-alt"></i>
+            <span>Logout</span>
+          </a>
+        </li>
+      </ul>
+      <div class="sidebar-footer">
+        <span>Admin Control Panel</span>
+      </div>
+    </div>
+    <!-- Content Wrapper -->
+    <div class="content-wrapper">
+      <!-- Header -->
+      <header class="header">
+        <button class="btn btn-sm d-md-none mobile-menu-toggle">
+          <i class="fas fa-bars"></i>
+        </button>
+        <h1 class="page-title">Update Complaint Status</h1>
+        <div class="ms-auto d-flex align-items-center">
+          <div class="dropdown user-dropdown">
+            <button class="btn btn-link dropdown-toggle text-decoration-none" type="button" id="userDropdown" data-bs-toggle="dropdown" aria-expanded="false">
+              <i class="fas fa-user-circle me-1"></i>
+              <span id="userName">Admin</span>
+            </button>
+            <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="userDropdown">
+              <li><a class="dropdown-item" href="#" onclick="logout()"><i class="fas fa-sign-out-alt me-2"></i>Logout</a></li>
+            </ul>
+          </div>
+        </div>
+      </header>
+      <!-- Main Content -->
+      <main class="main-content">
+        <div class="container-fluid">
+          <!-- Status Filters -->
+          <div class="row mb-4">
+            <div class="col-12">
+              <div class="content-card">
+                <div class="card-body">
+                  <div class="row">
+                    <div class="col-md-4">
+                      <div class="form-check">
+                        <input class="form-check-input" type="radio" name="statusFilter" id="filterAll" value="" checked>
+                        <label class="form-check-label" for="filterAll">
+                          All Complaints
+                        </label>
+                      </div>
+                    </div>
+                    <div class="col-md-4">
+                      <div class="form-check">
+                        <input class="form-check-input" type="radio" name="statusFilter" id="filterPending" value="Pending">
+                        <label class="form-check-label" for="filterPending">
+                          Pending Complaints
+                        </label>
+                      </div>
+                    </div>
+                    <div class="col-md-4">
+                      <div class="form-check">
+                        <input class="form-check-input" type="radio" name="statusFilter" id="filterInProgress" value="In Progress">
+                        <label class="form-check-label" for="filterInProgress">
+                          In Progress Complaints
+                        </label>
+                      </div>
+                    </div>
+                    <div class="col-md-4 mt-2">
+                      <div class="form-check">
+                        <input class="form-check-input" type="radio" name="statusFilter" id="filterResolved" value="Resolved">
+                        <label class="form-check-label" for="filterResolved">
+                          Resolved Complaints
+                        </label>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <!-- Complaints Table -->
+          <div class="row">
+            <div class="col-12">
+              <div class="content-card">
+                <div class="card-header">
+                  <h5 class="card-title">Complaints Status Management</h5>
+                </div>
+                <div class="card-body">
+                  <div class="table-container">
+                    <table class="custom-table">
+                      <thead>
+                        <tr>
+                          <th>ID</th>
+                          <th>Type</th>
+                          <th>Department</th>
+                          <th>Severity</th>
+                          <th>Date Filed</th>
+                          <th>Current Status</th>
+                          <th>Update Status</th>
+                        </tr>
+                      </thead>
+                      <tbody id="complaintsTableBody">
+                        <!-- Will be populated by JavaScript -->
+                      </tbody>
+                    </table>
+                  </div>
+                  <div id="noComplaints" class="text-center py-4 d-none">
+                    <i class="fas fa-search fa-3x text-muted mb-3"></i>
+                    <h5>No complaints found</h5>
+                    <p>No complaints match your filter criteria.</p>
+                  </div>
+                </div>
+                <div class="card-footer">
+                  <nav aria-label="Complaints pagination">
+                    <ul class="pagination justify-content-center mb-0" id="pagination">
+                      <!-- Will be populated by JavaScript -->
+                    </ul>
+                  </nav>
+                </div>
+              </div>
+            </div>
+          </div>
+          <!-- Status Update Message -->
+          <div class="row mt-4">
+            <div class="col-12">
+              <div id="statusUpdateMessage"></div>
+            </div>
+          </div>
+        </div>
+      </main>
+    </div>
+  </div>
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+  <script src="api.js"></script>
+  <script src="common.js"></script>
+  <script src="update-status.js"></script>
+</body>
+</html>
